@@ -1,0 +1,38 @@
+@model IEnumerable<Fiap.Web.AspNet.Models.RepresentanteModel>;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Representantes</title>
+</head>
+<body>
+    <h1>Representantes</h1>
+    <p>
+        <a asp-action="Cadastrar" asp-controller="Representante">Novo Representante</a>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>CPF</th>
+                <th>Nome</th>
+                <th>Actions</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.RepresentanteId</td>
+                    <td>@item.Cpf</td>
+                    <td>@item.NomeRepresentante</td>
+                    <td>
+                        <a asp-action="Editar" asp-controller="Representante" asp-route-id="@item.RepresentanteId">Editar</a>
+                        <a asp-action="Consultar" asp-controller="Representante" asp-route-id="@item.RepresentanteId">Consultar</a>
+                        <a asp-action="Excluir" asp-controller="Representante" asp-route-id="@item.RepresentanteId">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </p>
+</body>
+</html>
